@@ -696,6 +696,44 @@ footer{background:var(--bg3);border-top:0.5px solid var(--border);padding:64px 0
   .footer-top{grid-template-columns:1fr}
   .footer-bottom{flex-direction:column;align-items:flex-start}
 }
+
+/* ---- TIMELINE (Proceso) ---- */
+.timeline{position:relative;max-width:1000px;margin:56px auto 0}
+.tl-steps{list-style:none;display:grid;grid-template-columns:repeat(3,1fr);gap:40px;padding:0;margin:0}
+.tl-step{position:relative;text-align:center;padding-bottom:44px}
+.tl-num{display:inline-block;font-family:var(--font-d);font-size:13px;font-weight:700;letter-spacing:2px;color:rgba(255,255,255,0.5);margin-bottom:10px}
+.tl-title{font-family:var(--font-d);font-size:22px;font-weight:700;color:#fff;letter-spacing:-.4px;margin-bottom:10px}
+.tl-body{font-size:15px;font-weight:300;color:var(--text-2);line-height:1.65;max-width:280px;margin:0 auto}
+.tl-dot{position:absolute;left:50%;bottom:-7px;width:14px;height:14px;border-radius:50%;background:#fff;transform:translateX(-50%);z-index:2;
+  box-shadow:0 0 6px #fff,0 0 14px rgba(255,255,255,0.9),0 0 28px rgba(255,255,255,0.5)}
+.tl-line{height:2px;border-radius:2px;background:#fff;
+  box-shadow:0 0 4px #fff,0 0 10px rgba(255,255,255,0.85),0 0 22px rgba(255,255,255,0.45),0 0 44px rgba(26,107,255,0.35)}
+.tl-line::after{content:"";position:absolute;right:-2px;bottom:-5px;width:0;height:0}
+.tl-disclaimer{margin-top:28px;text-align:center;font-size:12px;font-weight:300;color:var(--text-3);line-height:1.6}
+@media(max-width:767px){
+  .timeline{padding-left:28px}
+  .tl-steps{grid-template-columns:1fr;gap:36px}
+  .tl-step{text-align:left;padding-bottom:0}
+  .tl-body{margin:0;max-width:none}
+  .tl-dot{left:-28px;top:4px;bottom:auto;transform:translateX(-6px)}
+  .tl-line{position:absolute;left:0;top:4px;bottom:64px;width:2px;height:auto}
+  .tl-disclaimer{text-align:left}
+}
+
+/* ---- TEAM: 2 personas + foto ---- */
+.team-grid-2{grid-template-columns:repeat(2,1fr)}
+.team-photo{position:relative}
+.team-photo img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:1}
+a.btn{text-decoration:none}
+
+/* ---- WHATSAPP FLOTANTE ---- */
+.wa-float{position:fixed;right:22px;bottom:22px;z-index:300;width:60px;height:60px;border-radius:50%;
+  background:#25D366;display:flex;align-items:center;justify-content:center;
+  box-shadow:0 8px 24px rgba(0,0,0,0.35),0 0 0 0 rgba(37,211,102,0.5);
+  animation:waPulse 2.6s infinite;transition:transform .25s}
+.wa-float:hover{transform:scale(1.08)}
+@keyframes waPulse{0%{box-shadow:0 8px 24px rgba(0,0,0,0.35),0 0 0 0 rgba(37,211,102,0.45)}70%{box-shadow:0 8px 24px rgba(0,0,0,0.35),0 0 0 16px rgba(37,211,102,0)}100%{box-shadow:0 8px 24px rgba(0,0,0,0.35),0 0 0 0 rgba(37,211,102,0)}}
+@media(max-width:639px){.wa-float{right:16px;bottom:16px;width:54px;height:54px}}
 </style>
 </head>
 <body>
@@ -722,8 +760,6 @@ footer{background:var(--bg3);border-top:0.5px solid var(--border);padding:64px 0
     <ul class="nav-links">
       <li><a href="#process">Proceso</a></li>
       <li><a href="#features">Funcionalidades</a></li>
-      <li><a href="#planes">Planes</a></li>
-      <li><a href="#faq">FAQ</a></li>
       <li><a href="#nosotros">Nosotros</a></li>
     </ul>
     <button class="nav-burger" aria-label="Menú"><span></span><span></span><span></span></button>
@@ -749,7 +785,7 @@ footer{background:var(--bg3);border-top:0.5px solid var(--border);padding:64px 0
           <!-- Loudmob stacked title -->
           <div style="position:relative;display:inline-block">
             <h1 class="t-h1" style="opacity:0;animation:fadeUp .8s .25s cubic-bezier(.25,.46,.45,.94) forwards">
-              Tu local,<br>siempre <span class="accent-b">en pantalla.</span>
+              Siempre<br><span class="accent-b">en pantalla.</span>
             </h1>
             <!-- Ghost layer -->
             <h1 class="t-h1" aria-hidden="true" style="
@@ -757,12 +793,11 @@ footer{background:var(--bg3);border-top:0.5px solid var(--border);padding:64px 0
               color:transparent;-webkit-text-stroke:1px rgba(255,255,255,0.06);
               transform:translate(4px,4px);
               opacity:0;animation:fadeUp .8s .25s cubic-bezier(.25,.46,.45,.94) forwards;
-            ">Tu local,<br>siempre <span style="color:transparent;-webkit-text-stroke:1px rgba(26,107,255,0.25)">en pantalla.</span>
+            ">Siempre<br><span style="color:transparent;-webkit-text-stroke:1px rgba(26,107,255,0.25)">en pantalla.</span>
             </h1>
           </div>
         </div>
-        <p class="hero-sub">Instalamos, diseñamos y gestionamos el contenido digital de tus pantallas, remotamente y en tiempo real. Contenido profesional y 100% fiel a tu marca.</p>
-        <p class="hero-note" style="opacity:0;animation:fadeUp .7s .55s cubic-bezier(.25,.46,.45,.94) forwards">Sin contrato de permanencia, <strong>hardware y software incluido.</strong></p>
+        <p class="hero-sub">Instalamos pantallas y diseñamos el contenido, trabajamos sobre las tuyas, o te damos la plataforma para autogestionarlo.</p>
       </div>
 
       <!-- VIDEO MOCKUP -->
@@ -786,17 +821,6 @@ footer{background:var(--bg3);border-top:0.5px solid var(--border);padding:64px 0
               <span>Actualizado</span><b>hace 3 min</b>
             </div>
           </div>
-        </div>
-        <!-- Only these two float cards -->
-        <div class="hero-float hf-left reveal d2">
-          <p class="hf-label">Impacto visual</p>
-          <p class="hf-val green">+340%</p>
-          <p class="hf-sub">vs. cartelería estática</p>
-        </div>
-        <div class="hero-float hf-right reveal d3">
-          <p class="hf-label">Locales activos</p>
-          <p class="hf-val blue">240+</p>
-          <p class="hf-sub">en Argentina</p>
         </div>
       </div>
 
@@ -832,22 +856,6 @@ footer{background:var(--bg3);border-top:0.5px solid var(--border);padding:64px 0
   </div>
 </div>
 
-<!-- ===================================================
-     CLIENTS BAR
-     =================================================== -->
-<div id="clients">
-  <div class="wrap">
-    <p class="clients-label">Empresas que confían en Frame Lab Studio</p>
-    <div class="clients-row">
-      <div class="client-item" title="Cliente 1"></div>
-      <div class="client-item" title="Cliente 2"></div>
-      <div class="client-item" title="Cliente 3"></div>
-      <div class="client-item" title="Cliente 4"></div>
-      <div class="client-item" title="Cliente 5"></div>
-      <div class="client-item" title="Cliente 6"></div>
-    </div>
-  </div>
-</div>
 
 <!-- ===================================================
      PROCESS
@@ -871,59 +879,29 @@ footer{background:var(--bg3);border-top:0.5px solid var(--border);padding:64px 0
       </div>
       <p class="t-body">Nos encargamos de toda la operación. Vos solo enfocate en tu negocio.</p>
     </div>
-    <div class="steps-row reveal d1">
-
-      <div class="step-card s1">
-        <div class="step-num">01</div>
-        <div class="step-icon">
-          <svg width="36" height="36" viewBox="0 0 36 36" fill="none">
-            <rect x="5" y="5" width="26" height="26" rx="5" stroke="#1A6BFF" stroke-width="2.2"/>
-            <path d="M12 18h12M18 12v12" stroke="#1A6BFF" stroke-width="2.2" stroke-linecap="round"/>
-          </svg>
-        </div>
-        <h3 class="step-title">Alta y briefing de marca</h3>
-        <p class="step-body">Te damos el alta en nuestro sistema en 10 minutos de manera presencial, ese mismo día verificamos que tus pantallas sean correctas para la instalación. Nos enviás tu manual de marca. Si no tenés logo ni manual definido, no importa: nos contás tu estilo visual y nuestro equipo de diseño toma el control.</p>
-      </div>
-
-      <div class="step-card s2">
-        <div class="step-num">02</div>
-        <div class="step-icon">
-          <svg width="36" height="36" viewBox="0 0 36 36" fill="none">
-            <rect x="4" y="10" width="28" height="19" rx="3" stroke="#00D68F" stroke-width="2.2"/>
-            <path d="M14 29h8M18 29v-3" stroke="#00D68F" stroke-width="2.2" stroke-linecap="round"/>
-            <circle cx="18" cy="19" r="4" stroke="#00D68F" stroke-width="2.2"/>
-          </svg>
-        </div>
-        <h3 class="step-title">Instalación del hardware</h3>
-        <p class="step-body">Un técnico certificado instala el player en tu local. El equipo ya viene conectado a nuestro servidor seguro y listo para emitir.</p>
-      </div>
-
-      <div class="step-card s3">
-        <div class="step-num">03</div>
-        <div class="step-icon">
-          <svg width="36" height="36" viewBox="0 0 36 36" fill="none">
-            <circle cx="18" cy="18" r="11" stroke="#FF3B30" stroke-width="2.2"/>
-            <path d="M18 13v5.5l3.5 3.5" stroke="#FF3B30" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
-            <path d="M10 8l2 2M26 8l-2 2" stroke="#FF3B30" stroke-width="1.8" stroke-linecap="round"/>
-          </svg>
-        </div>
-        <h3 class="step-title">Tu contenido, en vivo</h3>
-        <p class="step-body">En menos de una semana desde el alta, tus pantallas ya están transmitiendo contenido profesional bajo los estándares de tu marca. Podés actualizar menús, precios o promos al instante.</p>
-      </div>
-
-      <div class="step-card s4">
-        <div class="step-num">04</div>
-        <div class="step-icon">
-          <svg width="36" height="36" viewBox="0 0 36 36" fill="none">
-            <path d="M7 18c0-6.075 4.925-11 11-11s11 4.925 11 11-4.925 11-11 11" stroke="#FFD60A" stroke-width="2.2" stroke-linecap="round"/>
-            <path d="M11 26l-4 4M7 26h4v4" stroke="#FFD60A" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
-            <path d="M18 13v5l2.5 2.5" stroke="#FFD60A" stroke-width="2.2" stroke-linecap="round"/>
-          </svg>
-        </div>
-        <h3 class="step-title">Evolución continua</h3>
-        <p class="step-body">Nuestro equipo de diseño refresca el contenido según temporadas, campañas y cambios en tu oferta, previamente informadas por vos. Cada suscripción incluye actualizaciones de diseño.</p>
-      </div>
-
+    <div class="timeline reveal d1">
+      <ol class="tl-steps">
+        <li class="tl-step">
+          <span class="tl-num">01</span>
+          <h3 class="tl-title">Visita previa</h3>
+          <p class="tl-body">Visitamos tu local para verificar que todo esté listo para instalar las pantallas y el software.</p>
+          <span class="tl-dot" aria-hidden="true"></span>
+        </li>
+        <li class="tl-step">
+          <span class="tl-num">02</span>
+          <h3 class="tl-title">Instalación</h3>
+          <p class="tl-body">Instalamos tus pantallas y el software. ¿Ya tenés pantallas? Solo instalamos el software.</p>
+          <span class="tl-dot" aria-hidden="true"></span>
+        </li>
+        <li class="tl-step">
+          <span class="tl-num">03</span>
+          <h3 class="tl-title">Contenido al aire</h3>
+          <p class="tl-body">En 48 hs tu contenido ya está en pantalla. Después lo actualizás vos o lo hacemos nosotros.</p>
+          <span class="tl-dot" aria-hidden="true"></span>
+        </li>
+      </ol>
+      <div class="tl-line" aria-hidden="true"></div>
+      <p class="tl-disclaimer">Los plazos son estimados y aplican en condiciones óptimas: espacio apto para la instalación y contenido aprobado.</p>
     </div>
   </div>
 </section>
@@ -1012,72 +990,6 @@ footer{background:var(--bg3);border-top:0.5px solid var(--border);padding:64px 0
       </div>
     </div>
 
-    <!-- GLASSMORPHISM GRID 3×2 -->
-    <div class="feat-grid reveal d2">
-
-      <!-- Gestión -->
-      <div class="feat-card-g">
-        <span class="fc-chip blue">Gestión</span>
-        <h4 class="fc-title">Control remoto<br>en tiempo real</h4>
-        <p class="fc-body">Cambiá precios, activá promociones o actualizá el menú solo con un mensaje de WhatsApp o un correo electrónico. Nuestro equipo está disponible 8hs al día para gestionar tu contenido en el momento.</p>
-        <div style="display:flex;align-items:center;gap:10px;margin-top:20px;background:rgba(0,214,143,0.07);border:0.5px solid rgba(0,214,143,0.15);border-radius:10px;padding:12px 16px">
-          <span class="live-dot"></span>
-          <span style="font-size:13px;color:var(--green);font-weight:500">Equipo disponible 8hs / día</span>
-        </div>
-      </div>
-
-      <!-- Seguridad -->
-      <div class="feat-card-g">
-        <span class="fc-chip white">Seguridad</span>
-        <h4 class="fc-title">Hardware de<br>nivel empresarial</h4>
-        <p class="fc-body">Nuestros players corren un sistema operativo propietario de acceso completamente restringido. Cifrado de datos extremo a extremo y monitoreo de integridad 24/7.</p>
-        <div class="sec-items">
-          <div class="sec-item"><span class="sec-dot g"></span>Cifrado AES-256 extremo a extremo<span class="sec-badge">Activo</span></div>
-          <div class="sec-item"><span class="sec-dot b"></span>Monitoreo de integridad en tiempo real<span class="sec-badge">Activo</span></div>
-          <div class="sec-item"><span class="sec-dot y"></span>Acceso restringido por hardware ID<span class="sec-badge">Activo</span></div>
-        </div>
-      </div>
-
-      <!-- Escalabilidad -->
-      <div class="feat-card-g">
-        <span class="fc-chip green">Escalabilidad</span>
-        <h4 class="fc-title">De una pantalla<br>a toda tu red</h4>
-        <p class="fc-body">¿Tenés múltiples sucursales? Gestioná todas las pantallas desde un panel central. Publicá contenido segmentado por local, por zona o de forma masiva. Toda tu red, sincronizada al instante.</p>
-      </div>
-
-      <!-- Formatos -->
-      <div class="feat-card-g">
-        <span class="fc-chip yellow">Formatos</span>
-        <h4 class="fc-title">Cualquier pantalla,<br>cualquier tamaño</h4>
-        <p class="fc-body">El contenido se adapta automáticamente a cualquier resolución y orientación: TV horizontal de 32", pantalla vertical de 75", videowall o banner LED. Un solo sistema, todas las posibilidades.</p>
-        <div class="format-tags">
-          <span class="ftag y">16:9 horizontal</span>
-          <span class="ftag b">9:16 vertical</span>
-          <span class="ftag g">1:1 cuadrado</span>
-          <span class="ftag r">Videowall</span>
-        </div>
-      </div>
-
-      <!-- Programación -->
-      <div class="feat-card-g">
-        <span class="fc-chip red">Programación</span>
-        <h4 class="fc-title">Programá el futuro<br>de tu contenido</h4>
-        <p class="fc-body">Configurá cambios automáticos por horario, día de la semana o fecha especial. El sistema de reglas inteligentes cambia tu contenido solo: <em style="color:rgba(255,255,255,0.45)">"Mostrar la promo del Happy Hour de lunes a viernes de 17 a 20hs."</em></p>
-      </div>
-
-      <!-- Soporte -->
-      <div class="feat-card-g">
-        <span class="fc-chip white">Soporte</span>
-        <h4 class="fc-title">Soporte humano.<br>Siempre disponible.</h4>
-        <p class="fc-body">Ante cualquier falla, reemplazamos el equipo en 48hs sin costo. Nuestro sistema detecta problemas antes de que vos los reportes.</p>
-        <div class="sec-items">
-          <div class="sec-item"><span class="sec-dot g"></span>Respuesta en menos de 2hs hábiles</div>
-          <div class="sec-item"><span class="sec-dot b"></span>Reemplazo de hardware en 48hs</div>
-          <div class="sec-item"><span class="sec-dot y"></span>Monitoreo proactivo 24/7</div>
-        </div>
-      </div>
-
-    </div>
   </div>
 </section>
 
@@ -1094,111 +1006,6 @@ footer{background:var(--bg3);border-top:0.5px solid var(--border);padding:64px 0
     </div>
   </div>
 </div>
-
-<!-- ===================================================
-     PLANES
-     =================================================== -->
-<section id="planes">
-  <div class="glow-blue" style="width:600px;height:500px;top:0;left:50%;transform:translateX(-50%);opacity:.28;position:absolute"></div>
-  <div class="wrap" style="position:relative;z-index:2;text-align:center">
-    <div class="s-head center reveal">
-      <p class="t-eyebrow blue">Planes</p>
-      <div style="position:relative;display:inline-block;margin:12px 0 0">
-        <h2 style="font-family:var(--font-d);font-size:clamp(32px,4vw,60px);font-weight:700;line-height:1.06;letter-spacing:-2px;color:#fff">
-          Creamos tu plan a medida<br>según tus necesidades.
-        </h2>
-        <h2 aria-hidden="true" style="position:absolute;top:0;left:0;pointer-events:none;user-select:none;font-family:var(--font-d);font-size:clamp(32px,4vw,60px);font-weight:700;line-height:1.06;letter-spacing:-2px;color:transparent;-webkit-text-stroke:1px rgba(255,255,255,0.05);transform:translate(3px,3px)">
-          Creamos tu plan a medida<br>según tus necesidades.
-        </h2>
-      </div>
-    </div>
-    <p class="plan-section-sub reveal d1">O elegí el plan standard directamente. Sin contrato de permanencia. Hardware y software incluido. Sin letra chica.</p>
-    <div class="plan-box reveal d2">
-      <div class="plan-box-glow"></div>
-      <div class="plan-header">
-        <p class="plan-name">Plan Standard</p>
-        <div class="plan-price-row">
-          <span class="plan-curr">USD</span>
-          <span class="plan-amount">115</span>
-        </div>
-        <p class="plan-period">por mes · por pantalla</p>
-      </div>
-      <div class="plan-divider"></div>
-      <div class="plan-features">
-        <div class="plan-feat"><span class="pf-check"><svg viewBox="0 0 11 11" fill="none"><path d="M2 5.5l2.5 2.5 4.5-4.5" stroke="#00D68F" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Player Frame Lab incluido en alquiler</div>
-        <div class="plan-feat"><span class="pf-check"><svg viewBox="0 0 11 11" fill="none"><path d="M2 5.5l2.5 2.5 4.5-4.5" stroke="#00D68F" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Software propietario y actualizaciones incluidas</div>
-        <div class="plan-feat"><span class="pf-check"><svg viewBox="0 0 11 11" fill="none"><path d="M2 5.5l2.5 2.5 4.5-4.5" stroke="#00D68F" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Diseño y producción de contenido bajo tu identidad de marca</div>
-        <div class="plan-feat"><span class="pf-check"><svg viewBox="0 0 11 11" fill="none"><path d="M2 5.5l2.5 2.5 4.5-4.5" stroke="#00D68F" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Actualizaciones vía WhatsApp o mail, 8hs al día</div>
-        <div class="plan-feat"><span class="pf-check"><svg viewBox="0 0 11 11" fill="none"><path d="M2 5.5l2.5 2.5 4.5-4.5" stroke="#00D68F" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Instalación y configuración incluidas</div>
-        <div class="plan-feat"><span class="pf-check"><svg viewBox="0 0 11 11" fill="none"><path d="M2 5.5l2.5 2.5 4.5-4.5" stroke="#00D68F" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Soporte técnico disponible 8hs / día</div>
-        <div class="plan-feat"><span class="pf-check"><svg viewBox="0 0 11 11" fill="none"><path d="M2 5.5l2.5 2.5 4.5-4.5" stroke="#00D68F" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Monitoreo y reemplazo de hardware en 48hs</div>
-        <div class="plan-feat"><span class="pf-check"><svg viewBox="0 0 11 11" fill="none"><path d="M2 5.5l2.5 2.5 4.5-4.5" stroke="#00D68F" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Compatible con cualquier tamaño y orientación de pantalla</div>
-      </div>
-      <div class="plan-cta">
-        <button class="btn btn-green" style="width:100%;justify-content:center;font-size:16px;padding:16px">
-          Empezar con el plan standard
-          <svg viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        </button>
-      </div>
-      <p class="plan-legal">¿Necesitás más de una pantalla o solución para múltiples sucursales? <a href="#" style="color:var(--blue)">Contactanos y armamos tu plan.</a></p>
-    </div>
-    <p style="margin-top:20px;font-size:13px;color:var(--text-3);line-height:1.7">
-      Precios en USD. Facturación en pesos argentinos al TC del día de pago.<br>Sin permanencia mínima los primeros 3 meses.
-    </p>
-  </div>
-</section>
-
-<!-- ===================================================
-     FAQ
-     =================================================== -->
-<section id="faq">
-  <div class="wrap">
-    <div class="faq-layout">
-      <div class="reveal">
-        <p class="t-eyebrow green" style="margin-bottom:14px">FAQ</p>
-        <div style="position:relative;display:inline-block;margin-bottom:20px">
-          <h2 style="font-family:var(--font-d);font-size:clamp(32px,4vw,60px);font-weight:700;line-height:1.06;letter-spacing:-2px;color:#fff">
-            Preguntas<br>frecuentes.
-          </h2>
-          <h2 aria-hidden="true" style="position:absolute;top:0;left:0;pointer-events:none;user-select:none;font-family:var(--font-d);font-size:clamp(32px,4vw,60px);font-weight:700;line-height:1.06;letter-spacing:-2px;color:transparent;-webkit-text-stroke:1px rgba(255,255,255,0.05);transform:translate(3px,3px)">
-            Preguntas<br>frecuentes.
-          </h2>
-        </div>
-        <p class="t-body">¿Algo no quedó claro? Escribinos a <a href="/cdn-cgi/l/email-protection#1c7473707d5c7a6e7d7179707d7e6f6869787573327f7371" style="color:var(--blue)"><span class="__cf_email__" data-cfemail="f49c9b9895b49286959991989596878081909d9bda979b99">[email&#160;protected]</span></a> y te respondemos en el día.</p>
-      </div>
-      <div class="faq-list reveal d1">
-        <div class="faq-item open">
-          <button class="faq-q" onclick="toggleFaq(this)">¿Tengo que comprar el hardware o lo alquilan?<span class="faq-toggle">+</span></button>
-          <div class="faq-a">El player Frame Lab está incluido en el alquiler mensual. No hacés ninguna inversión inicial en equipos. Si decidís dar de baja el servicio, el equipo se retira sin cargo.</div>
-        </div>
-        <div class="faq-item">
-          <button class="faq-q" onclick="toggleFaq(this)">¿Cómo actualizo el contenido?<span class="faq-toggle">+</span></button>
-          <div class="faq-a">Es tan simple como mandar un WhatsApp o un correo electrónico a nuestro equipo. Nuestros diseñadores están disponibles 8hs al día para aplicar los cambios en el momento. No necesitás manejar ningún software ni panel.</div>
-        </div>
-        <div class="faq-item">
-          <button class="faq-q" onclick="toggleFaq(this)">¿Funciona con cualquier tipo de pantalla o TV?<span class="faq-toggle">+</span></button>
-          <div class="faq-a">Sí. El player se conecta a cualquier pantalla con entrada HDMI, lo que incluye prácticamente todos los televisores y monitores modernos. Soporta cualquier tamaño, desde 24" hasta videowalls, en orientación horizontal o vertical.</div>
-        </div>
-        <div class="faq-item">
-          <button class="faq-q" onclick="toggleFaq(this)">¿Qué pasa si el equipo se rompe?<span class="faq-toggle">+</span></button>
-          <div class="faq-a">Ante cualquier falla de hardware, enviamos un equipo de reemplazo en 48 horas hábiles sin costo adicional. Nuestro sistema de monitoreo detecta la mayoría de los problemas antes de que vos los reportes.</div>
-        </div>
-        <div class="faq-item">
-          <button class="faq-q" onclick="toggleFaq(this)">¿Hay permanencia mínima?<span class="faq-toggle">+</span></button>
-          <div class="faq-a">No en los primeros 3 meses: es un período de prueba sin permanencia. A partir del 4to mes, aplica permanencia de 3 meses adicionales. El proceso de baja es simple, sin penalidades ocultas.</div>
-        </div>
-        <div class="faq-item">
-          <button class="faq-q" onclick="toggleFaq(this)">¿Necesito tener un manual de marca o logo definido?<span class="faq-toggle">+</span></button>
-          <div class="faq-a">No. Si no tenés manual de marca o logo definido, no hay problema. En el onboarding nos contás cuál es el estilo visual de tu negocio y nuestro equipo de diseño arma la propuesta estética para vos.</div>
-        </div>
-        <div class="faq-item">
-          <button class="faq-q" onclick="toggleFaq(this)">¿Instalan en todo el país?<span class="faq-toggle">+</span></button>
-          <div class="faq-a">Contamos con red de técnicos certificados en Buenos Aires, GBA, Rosario, Córdoba, Mendoza y otras ciudades principales. Para localidades fuera de estas áreas, coordinamos la instalación y enviamos el equipo preconfigurado.</div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
 
 <!-- ===================================================
      NOSOTROS
@@ -1225,21 +1032,16 @@ footer{background:var(--bg3);border-top:0.5px solid var(--border);padding:64px 0
         </div>
       </div>
       <div class="reveal from-right d1">
-        <div class="team-grid">
+        <div class="team-grid team-grid-2">
           <div class="team-card">
-            <div class="team-photo"><span class="team-initial">JB</span></div>
+            <div class="team-photo"><img src="jeronimo-bello.jpg" alt="Jerónimo Bello, co-fundador y director creativo de Frame Lab Studio" loading="lazy" onerror="this.remove()"><span class="team-initial">JB</span></div>
             <p class="team-name">Jerónimo Bello</p>
             <p class="team-role">Co-fundador &<br>Director Creativo</p>
           </div>
           <div class="team-card">
-            <div class="team-photo"><span class="team-initial">VM</span></div>
+            <div class="team-photo"><img src="vivian-martinez.jpg" alt="Vivian Martínez, co-fundadora y directora creativa de Frame Lab Studio" loading="lazy" onerror="this.remove()"><span class="team-initial">VM</span></div>
             <p class="team-name">Vivian Martínez</p>
             <p class="team-role">Co-fundadora &<br>Directora Creativa</p>
-          </div>
-          <div class="team-card">
-            <div class="team-photo"><span class="team-initial">LF</span></div>
-            <p class="team-name">Lucas Ferreyra</p>
-            <p class="team-role">Director de Tecnología<br>y Cuentas</p>
           </div>
         </div>
       </div>
@@ -1263,14 +1065,12 @@ footer{background:var(--bg3);border-top:0.5px solid var(--border);padding:64px 0
           Tu local tiene algo<br>para decir.
         </h2>
       </div>
-      <p class="cta-body">En menos de 7 días, tus pantallas hablan por tu marca. Sin inversión en hardware. Sin contrato inicial.</p>
       <div class="cta-actions">
-        <button class="btn btn-blue" style="font-size:16px;padding:15px 40px">
+        <a class="btn btn-blue" href="mailto:contacto@frameslabstudio.com?subject=Quiero%20empezar%20con%20Frame%20Lab%20Studio" style="font-size:16px;padding:15px 40px">
           Empezar ahora
           <svg viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        </button>
+        </a>
       </div>
-      <p class="cta-legal"><strong>Hardware y software incluidos.</strong> Instalación sin cargo en AMBA.</p>
     </div>
   </div>
 </section>
@@ -1290,54 +1090,43 @@ footer{background:var(--bg3);border-top:0.5px solid var(--border);padding:64px 0
         </div>
         <p class="footer-tagline">Diseño y gestión de contenido digital para pantallas en locales comerciales. Buenos Aires, Argentina.</p>
         <div class="footer-contact">
-          <p>✉ <a href="/cdn-cgi/l/email-protection#3a5255565b7a5c485b575f565b58494e4f5e535514595557"><span class="__cf_email__" data-cfemail="9ef6f1f2ffdef8ecfff3fbf2fffcedeaebfaf7f1b0fdf1f3">[email&#160;protected]</span></a></p>
-          <p>💬 <a href="https://wa.me/5491100000000">+54 9 11 0000-0000</a></p>
+          <p>✉ <a href="mailto:contacto@frameslabstudio.com">contacto@frameslabstudio.com</a></p>
+          <p>💬 <a href="https://wa.me/5491157996141" target="_blank" rel="noopener">+54 9 11 5799-6141</a></p>
           <p>📍 Buenos Aires, Argentina</p>
         </div>
       </div>
       <div class="footer-col">
-        <h5>Producto</h5>
+        <h5>Servicio</h5>
         <ul>
-          <li><a href="#process">Cómo funciona</a></li>
+          <li><a href="#process">Proceso</a></li>
           <li><a href="#features">Funcionalidades</a></li>
-          <li><a href="#planes">Planes</a></li>
-          <li><a href="#faq">FAQ</a></li>
         </ul>
       </div>
       <div class="footer-col">
         <h5>Empresa</h5>
         <ul>
           <li><a href="#nosotros">Nosotros</a></li>
-          <li><a href="#">Blog</a></li>
-          <li><a href="#">Casos de éxito</a></li>
-          <li><a href="#">Contacto</a></li>
-        </ul>
-      </div>
-      <div class="footer-col">
-        <h5>Legal</h5>
-        <ul>
-          <li><a href="#">Términos de uso</a></li>
-          <li><a href="#">Política de privacidad</a></li>
-          <li><a href="#">SLA y garantías</a></li>
+          <li><a href="mailto:contacto@frameslabstudio.com">Contacto</a></li>
+          <li><a href="https://wa.me/5491157996141" target="_blank" rel="noopener">WhatsApp</a></li>
         </ul>
       </div>
     </div>
     <div class="footer-bottom">
-      <p class="footer-copy">© 2025 Frame Lab Studio S.R.L. — CUIT 30-00000000-0</p>
-      <div class="footer-legal">
-        <a href="#">Privacidad</a>
-        <a href="#">Términos</a>
-        <a href="#">Cookies</a>
-      </div>
+      <p class="footer-copy">© 2026 Frame Lab Studio</p>
       <p class="footer-copy">Hecho en Argentina 🇦🇷</p>
     </div>
   </div>
 </footer>
 
+<!-- WHATSAPP FLOTANTE — acompaña todo el scroll -->
+<a href="https://wa.me/5491157996141?text=Hola%2C%20quiero%20info%20sobre%20Frame%20Lab%20Studio" class="wa-float" target="_blank" rel="noopener" aria-label="Escribinos por WhatsApp">
+  <svg viewBox="0 0 32 32" width="30" height="30" aria-hidden="true"><path fill="#fff" d="M16.04 3C8.86 3 3.02 8.83 3.02 16c0 2.3.6 4.53 1.75 6.5L3 29l6.68-1.75A13 13 0 0 0 16.04 29C23.2 29 29 23.17 29 16S23.2 3 16.04 3Zm0 23.8c-2 0-3.95-.54-5.65-1.55l-.4-.24-3.97 1.04 1.06-3.86-.26-.4A10.77 10.77 0 0 1 5.2 16c0-5.97 4.86-10.83 10.84-10.83 5.97 0 10.8 4.86 10.8 10.83 0 5.98-4.84 10.8-10.8 10.8Zm5.94-8.1c-.33-.16-1.94-.95-2.24-1.06-.3-.11-.52-.16-.74.17-.22.32-.85 1.06-1.04 1.28-.19.22-.38.24-.71.08-.33-.16-1.38-.51-2.63-1.62-.97-.87-1.63-1.94-1.82-2.27-.19-.33-.02-.5.14-.67.15-.15.33-.38.49-.57.17-.19.22-.33.33-.55.11-.22.05-.41-.03-.57-.08-.16-.74-1.78-1.01-2.44-.27-.64-.54-.55-.74-.56h-.63c-.22 0-.57.08-.87.41-.3.33-1.14 1.11-1.14 2.71s1.17 3.15 1.33 3.36c.16.22 2.3 3.5 5.56 4.91.78.34 1.39.54 1.86.69.78.25 1.49.21 2.05.13.63-.09 1.94-.79 2.21-1.56.27-.77.27-1.42.19-1.56-.08-.14-.3-.22-.63-.38Z"/></svg>
+</a>
+
 <!-- ===================================================
      JAVASCRIPT
      =================================================== -->
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+<script>
 /* ---- Scroll Reveal ---- */
 const ro=new IntersectionObserver(entries=>{
   entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');ro.unobserve(e.target)}})
@@ -1374,12 +1163,6 @@ document.addEventListener('touchmove',e=>{
   cg.style.top=_my+'px';
 },{passive:true});
 
-/* ---- FAQ ---- */
-function toggleFaq(btn){
-  const item=btn.closest('.faq-item'),isOpen=item.classList.contains('open');
-  document.querySelectorAll('.faq-item').forEach(i=>i.classList.remove('open'));
-  if(!isOpen)item.classList.add('open');
-}
 
 /* ---- Hamburger ---- */
 const burger=document.querySelector('.nav-burger');
