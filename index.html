@@ -734,6 +734,58 @@ a.btn{text-decoration:none}
 .wa-float:hover{transform:scale(1.08)}
 @keyframes waPulse{0%{box-shadow:0 8px 24px rgba(0,0,0,0.35),0 0 0 0 rgba(37,211,102,0.45)}70%{box-shadow:0 8px 24px rgba(0,0,0,0.35),0 0 0 16px rgba(37,211,102,0)}100%{box-shadow:0 8px 24px rgba(0,0,0,0.35),0 0 0 0 rgba(37,211,102,0)}}
 @media(max-width:639px){.wa-float{right:16px;bottom:16px;width:54px;height:54px}}
+
+/* ---- MODAL CONTACTO ---- */
+.cm-overlay{position:fixed;inset:0;z-index:400;background:rgba(5,6,10,0.72);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);
+  display:flex;align-items:center;justify-content:center;padding:20px;opacity:0;pointer-events:none;transition:opacity .25s}
+.cm-overlay.open{opacity:1;pointer-events:auto}
+.cm-card{position:relative;width:100%;max-width:460px;background:var(--bg3);border:0.5px solid var(--border-bright);border-radius:var(--r-lg);
+  padding:34px 30px 30px;box-shadow:0 30px 80px rgba(0,0,0,0.55),0 0 60px rgba(26,107,255,0.12);transform:translateY(14px) scale(.98);transition:transform .3s cubic-bezier(.25,.46,.45,.94)}
+.cm-overlay.open .cm-card{transform:none}
+.cm-close{position:absolute;top:14px;right:14px;width:34px;height:34px;border-radius:50%;border:0.5px solid var(--border);background:rgba(255,255,255,0.05);
+  color:var(--text-2);font-size:20px;line-height:1;cursor:pointer;transition:background .2s,color .2s}
+.cm-close:hover{background:rgba(255,255,255,0.1);color:#fff}
+.cm-title{font-family:var(--font-d);font-size:26px;font-weight:700;color:#fff;letter-spacing:-.6px;margin-bottom:6px}
+.cm-sub{font-size:14px;font-weight:300;color:var(--text-2);margin-bottom:22px}
+.cm-field{display:block;margin-bottom:14px}
+.cm-field span{display:block;font-size:12px;font-weight:500;color:var(--text-2);margin-bottom:6px;letter-spacing:.3px}
+.cm-field input,.cm-field textarea{width:100%;font-family:var(--font-b);font-size:15px;color:#fff;background:rgba(255,255,255,0.04);
+  border:0.5px solid var(--border-bright);border-radius:var(--r-sm);padding:12px 14px;outline:none;transition:border-color .2s,background .2s;box-sizing:border-box}
+.cm-field textarea{min-height:120px;resize:vertical}
+.cm-field input:focus,.cm-field textarea:focus{border-color:var(--blue);background:rgba(26,107,255,0.06)}
+.cm-hp{position:absolute;left:-9999px;opacity:0;height:0;width:0}
+.cm-send{width:100%;justify-content:center;margin-top:6px}
+.cm-send[disabled]{opacity:.6;cursor:wait;transform:none}
+.cm-status{margin-top:14px;font-size:14px;text-align:center;min-height:20px}
+.cm-status.ok{color:var(--green)}
+.cm-status.err{color:#ff6b62}
+.cm-status a{color:inherit;text-decoration:underline}
+@media(max-width:639px){.cm-card{padding:30px 20px 22px}.cm-send{max-width:none}}
+
+/* ---- AJUSTES MOBILE ---- */
+html{overflow-x:hidden}
+@supports(overflow:clip){html,body{overflow-x:clip}}
+#hero,#features,#cta,#process,#nosotros{overflow-x:clip}
+.feat-media-socalo{min-height:46px;display:flex;flex-direction:column;justify-content:flex-end}
+.socalo-eyebrow,.socalo-title{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+@media(max-width:639px){
+  .feat-media-socalo{padding:7px 9px;min-height:42px}
+  .socalo-eyebrow{font-size:8px;letter-spacing:1.4px}
+  .socalo-title{font-size:13px}
+  .stats-row{grid-template-columns:repeat(4,1fr)}
+  .stat-col{padding:26px 4px;border-bottom:none;border-right:0.5px solid var(--border)}
+  .stat-col:last-child{border-right:none}
+  .stat-n{font-size:clamp(20px,6.4vw,30px);letter-spacing:-1px;margin-bottom:8px}
+  .stat-l{font-size:10px;line-height:1.35}
+  .team-stats{flex-wrap:nowrap;gap:8px}
+  .team-stat{flex:1;min-width:0;padding:14px 6px}
+  .ts-val{font-size:22px}
+  .ts-label{font-size:8px;letter-spacing:1px}
+}
+
+.stats-row{grid-template-columns:repeat(3,1fr)}
+.stats-src{text-align:center;font-size:11px;color:var(--text-3);margin-top:18px;line-height:1.5}
+@media(max-width:639px){.stats-row{grid-template-columns:repeat(3,1fr)}.stat-col{padding:26px 8px}.stat-n{font-size:clamp(24px,7.5vw,34px)}.stat-l{font-size:11px}.stats-src{font-size:10px;padding:0 8px}}
 </style>
 </head>
 <body>
@@ -982,8 +1034,8 @@ a.btn{text-decoration:none}
           <div class="feat-media-item">
             <img src="Cantina.jpg" alt="WiFi La Cantina" style="width:100%;height:100%;object-fit:cover">
             <div class="feat-media-socalo" style="background:rgba(0,168,120,0.75)">
-              <p class="socalo-eyebrow">Servicio al cliente</p>
-              <p class="socalo-title">WiFi LaCantina_5G</p>
+              <p class="socalo-eyebrow">Servicio</p>
+              <p class="socalo-title">WiFi gratis</p>
             </div>
           </div>
         </div>
@@ -999,11 +1051,11 @@ a.btn{text-decoration:none}
 <div id="stats">
   <div class="wrap">
     <div class="stats-row reveal">
-      <div class="stat-col"><p class="stat-n b">+340%</p><p class="stat-l">Mayor retención visual vs. cartelería impresa</p></div>
-      <div class="stat-col"><p class="stat-n g">72%</p><p class="stat-l">De consumidores recuerdan contenido en pantalla</p></div>
-      <div class="stat-col"><p class="stat-n y">30%</p><p class="stat-l">Aumento promedio en ventas de ítems destacados</p></div>
-      <div class="stat-col"><p class="stat-n r">240+</p><p class="stat-l">Locales activos con Frame Lab Studio</p></div>
+      <div class="stat-col"><p class="stat-n b">+400%</p><p class="stat-l">Más visualizaciones que la cartelería estática</p></div>
+      <div class="stat-col"><p class="stat-n g">83%</p><p class="stat-l">De las personas recuerda el mensaje que vio en pantalla</p></div>
+      <div class="stat-col"><p class="stat-n y">+33%</p><p class="stat-l">Hasta un 33% más de ventas que con cartelería impresa</p></div>
     </div>
+    <p class="stats-src">Fuentes: Arbitron, <em>Out-of-Home Digital Video Display Study</em> (2010); Nielsen, estudio en supermercados (2010).</p>
   </div>
 </div>
 
@@ -1025,11 +1077,6 @@ a.btn{text-decoration:none}
         </div>
         <p class="t-body">Somos un equipo de diseñadores, desarrolladores y especialistas en comunicación visual. Fundamos Frame Lab Studio con una convicción: los negocios físicos merecen el mismo nivel de comunicación visual que las grandes marcas.</p>
         <p class="t-body" style="margin-top:14px">Trabajamos de cerca con cada cliente para entender su marca, su cliente ideal y sus objetivos comerciales. El contenido que hacemos no es genérico: está hecho para tu negocio.</p>
-        <div class="team-stats">
-          <div class="team-stat"><p class="ts-val" style="color:rgba(255,255,255,0.5)">2021</p><p class="ts-label">Fundación</p></div>
-          <div class="team-stat"><p class="ts-val b">240+</p><p class="ts-label">Clientes activos</p></div>
-          <div class="team-stat"><p class="ts-val g">98%</p><p class="ts-label">Renovación anual</p></div>
-        </div>
       </div>
       <div class="reveal from-right d1">
         <div class="team-grid team-grid-2">
@@ -1117,6 +1164,25 @@ a.btn{text-decoration:none}
     </div>
   </div>
 </footer>
+
+<!-- MODAL CONTACTO — se abre con cualquier link de mail -->
+<div class="cm-overlay" id="contact-modal" aria-hidden="true">
+  <div class="cm-card" role="dialog" aria-modal="true" aria-labelledby="cm-title">
+    <button type="button" class="cm-close" aria-label="Cerrar">&times;</button>
+    <h3 class="cm-title" id="cm-title">Escribinos</h3>
+    <p class="cm-sub">Dejanos tu mensaje y te respondemos a la brevedad.</p>
+    <form id="contact-form" novalidate>
+      <label class="cm-field"><span>Nombre y apellido</span><input type="text" name="nombre" autocomplete="name" required></label>
+      <label class="cm-field"><span>Correo electrónico</span><input type="email" name="email" autocomplete="email" required></label>
+      <label class="cm-field"><span>Mensaje</span><textarea name="mensaje" required></textarea></label>
+      <input type="text" name="_honey" class="cm-hp" tabindex="-1" autocomplete="off" aria-hidden="true">
+      <button type="submit" class="btn btn-blue cm-send">Enviar mensaje
+        <svg viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </button>
+      <p class="cm-status" role="status" aria-live="polite"></p>
+    </form>
+  </div>
+</div>
 
 <!-- WHATSAPP FLOTANTE — acompaña todo el scroll -->
 <a href="https://wa.me/5491157996141?text=Hola%2C%20quiero%20info%20sobre%20Frame%20Lab%20Studio" class="wa-float" target="_blank" rel="noopener" aria-label="Escribinos por WhatsApp">
@@ -1238,6 +1304,44 @@ document.querySelectorAll('a[href^="#"]').forEach(a=>{
     if(t){e.preventDefault();t.scrollIntoView({behavior:'smooth',block:'start'});}
   });
 });
+
+/* ---- MODAL CONTACTO ---- */
+(function(){
+  const EMAIL='hola@frameslabstudio.com';
+  const WA='5491157996141';
+  const modal=document.getElementById('contact-modal');
+  const form=document.getElementById('contact-form');
+  const status=form.querySelector('.cm-status');
+  const sendBtn=form.querySelector('.cm-send');
+  function openM(){modal.classList.add('open');modal.setAttribute('aria-hidden','false');document.body.style.overflow='hidden';
+    setTimeout(()=>form.querySelector('input[name=nombre]').focus(),200)}
+  function closeM(){modal.classList.remove('open');modal.setAttribute('aria-hidden','true');document.body.style.overflow=''}
+  document.querySelectorAll('a[href^="mailto:"]').forEach(a=>a.addEventListener('click',e=>{e.preventDefault();openM()}));
+  modal.querySelector('.cm-close').addEventListener('click',closeM);
+  modal.addEventListener('click',e=>{if(e.target===modal)closeM()});
+  document.addEventListener('keydown',e=>{if(e.key==='Escape'&&modal.classList.contains('open'))closeM()});
+  form.addEventListener('submit',async e=>{
+    e.preventDefault();
+    const d=new FormData(form);
+    const nombre=(d.get('nombre')||'').trim(),email=(d.get('email')||'').trim(),mensaje=(d.get('mensaje')||'').trim();
+    status.className='cm-status';
+    if(!nombre||!email||!mensaje){status.classList.add('err');status.textContent='Completá los tres campos, por favor.';return}
+    if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)){status.classList.add('err');status.textContent='Revisá que el correo esté bien escrito.';return}
+    if(d.get('_honey'))return;
+    sendBtn.disabled=true;status.textContent='Enviando…';
+    try{
+      const r=await fetch('https://formsubmit.co/ajax/'+EMAIL,{method:'POST',headers:{'Content-Type':'application/json','Accept':'application/json'},
+        body:JSON.stringify({'Nombre y apellido':nombre,'Correo':email,'Mensaje':mensaje,_replyto:email,_subject:'Nuevo mensaje desde la web — '+nombre,_template:'table',_captcha:'false'})});
+      const j=await r.json().catch(()=>({}));
+      if(!r.ok||j.success==='false'||j.success===false)throw new Error(j.message||'error');
+      status.classList.add('ok');status.textContent='¡Gracias! Recibimos tu mensaje y te respondemos pronto.';form.reset();
+      setTimeout(closeM,3500);
+    }catch(err){
+      status.classList.add('err');
+      status.innerHTML='No se pudo enviar. Escribinos por <a href="https://wa.me/'+WA+'" target="_blank" rel="noopener">WhatsApp</a>.';
+    }finally{sendBtn.disabled=false}
+  });
+})();
 </script>
 </body>
 </html>
